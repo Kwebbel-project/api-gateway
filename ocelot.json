@@ -1,8 +1,8 @@
 {
   "Routes": [
-    // User API
+    // Profile API
     {
-      "DownstreamPathTemplate": "/api/user",
+      "DownstreamPathTemplate": "/api/profile",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -11,12 +11,12 @@
         }
       ],
 
-      "UpstreamPathTemplate": "/user-service/user",
-      "UpstreamHttpMethod": [ "Get", "Post", "Put" ]
+      "UpstreamPathTemplate": "/profile-service/profile",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ]
 
     },
     {
-      "DownstreamPathTemplate": "/api/user/{id}",
+      "DownstreamPathTemplate": "/api/profile/update",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -25,23 +25,21 @@
         }
       ],
 
-      "UpstreamPathTemplate": "/user-service/user/{id}",
+      "UpstreamPathTemplate": "/profile-service/profile/update",
+      "UpstreamHttpMethod": [ "Post", "Delete" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/profile/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5001
+        }
+      ],
+
+      "UpstreamPathTemplate": "/profile-service/profile/{id}",
       "UpstreamHttpMethod": [ "Get", "Delete" ]
-    },
-    // User API auth
-    {
-      "DownstreamPathTemplate": "/api/auth/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5001
-        }
-      ],
-
-      "UpstreamPathTemplate": "/user-service/auth/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Put" ]
-
     },
     // Tweet API
     {
